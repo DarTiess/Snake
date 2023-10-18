@@ -2,6 +2,7 @@ using CamFollow;
 using DefaultNamespace;
 using Infrastructure.Input;
 using Infrastructure.Level;
+using Planet;
 using UI;
 using UnityEngine;
 
@@ -25,6 +26,11 @@ public class Bootstrap : MonoBehaviour
    [SerializeField] private float _appleSpawnRadius;
    [SerializeField] private Apple _applePrefab;
    [SerializeField] private int _appleCount;
+   [Space(20)]
+   [Header("Planet Settings")]
+   [SerializeField] private PlaneSpawner _planeSpawner;
+   [SerializeField] private PlanePart _planePartPrefab;
+   [SerializeField] private int _planeCount;
 
    private IInputService _input;
    private LevelAction _levelAction;
@@ -43,6 +49,8 @@ public class Bootstrap : MonoBehaviour
       _camera.Initialize(_levelAction, _playerContainer.transform);
       
       _appleSpawner.Initialize(_applePrefab, _appleCount, _playerContainer.transform,_appleSpawnRadius);
+      
+      _planeSpawner.Initialize(_planePartPrefab, _planeCount);
    }
 
 
