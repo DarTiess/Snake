@@ -1,4 +1,5 @@
 using CamFollow;
+using DefaultNamespace;
 using Infrastructure.Input;
 using Infrastructure.Level;
 using UI;
@@ -18,6 +19,12 @@ public class Bootstrap : MonoBehaviour
    [Space(20)]
    [Header("UI Settings")]
    [SerializeField] private UIControl _uiCanvas;
+   [Space(20)]
+   [Header("Apple Spawner")]
+   [SerializeField] private AppleSpawner _appleSpawner;
+   [SerializeField] private float _appleSpawnRadius;
+   [SerializeField] private Apple _applePrefab;
+   [SerializeField] private int _appleCount;
 
    private IInputService _input;
    private LevelAction _levelAction;
@@ -34,6 +41,8 @@ public class Bootstrap : MonoBehaviour
       
       _camera = Camera.main.GetComponent<CamFollower>();
       _camera.Initialize(_levelAction, _playerContainer.transform);
+      
+      _appleSpawner.Initialize(_applePrefab, _appleCount, _playerContainer.transform,_appleSpawnRadius);
    }
 
 

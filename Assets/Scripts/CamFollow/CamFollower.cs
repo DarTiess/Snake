@@ -63,7 +63,7 @@ namespace CamFollow {
        
             transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);    
 
-            transform.LookAt(_target);     
+           // transform.LookAt(_target);     
         }
 
         public void SetStop()
