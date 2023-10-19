@@ -7,12 +7,10 @@ namespace DefaultNamespace
     {
         private List<T> _pool;
         private T _prefab;
-        private int _size;
 
         public void CreatePool(T prefab, int size, Transform parent)
         {
             _prefab = prefab;
-            _size = size;
             _pool = new List<T>(size);
 
             for (int i = 0; i < size; i++)

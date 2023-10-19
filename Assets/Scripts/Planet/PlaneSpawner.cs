@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using DefaultNamespace;
-using UnityEditor.Search;
 using UnityEngine;
 
 namespace Planet
@@ -40,7 +39,6 @@ namespace Planet
 
         private void CreateNewPlanePart(Vector3 position, PlanePart plane, WorldSide side)
         {
-           // plane.CreateNewPlane -= CreateNewPlanePart;
             SpawnPlane(position, side);
         }
     }

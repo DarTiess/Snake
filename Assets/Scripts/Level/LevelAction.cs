@@ -14,13 +14,13 @@ namespace Infrastructure.Level
         public event Action OnPlayGame;
         public event Action StopGame;
         
-        private float timeWaitLose;
-        private float timeWaitWin;
+        private float _timeWaitLose;
+        private float _timeWaitWin;
         private bool _onPaused;
         public LevelAction(float timeWaitLose, float timeWaitWin)
         {
-            this.timeWaitLose = timeWaitLose;
-            this.timeWaitWin = timeWaitWin;
+            _timeWaitLose = timeWaitLose;
+            _timeWaitWin = timeWaitWin;
             LevelStart();
         }
     
@@ -56,9 +56,9 @@ namespace Infrastructure.Level
 
         private void LateLost()
         {
-            while (timeWaitLose>0)
+            while (_timeWaitLose>0)
             {
-                timeWaitLose -= Time.deltaTime;
+                _timeWaitLose -= Time.deltaTime;
             }
             OnLateLost?.Invoke();
         }
@@ -71,9 +71,9 @@ namespace Infrastructure.Level
 
         private void LateWin()
         {
-            while (timeWaitWin>0)
+            while (_timeWaitWin>0)
             {
-                timeWaitWin -= Time.deltaTime;
+                _timeWaitWin -= Time.deltaTime;
             }
             OnLateWin?.Invoke();
         }

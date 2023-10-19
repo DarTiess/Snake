@@ -1,5 +1,4 @@
-﻿using System;
-using Infrastructure.Input;
+﻿using Infrastructure.Input;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -18,7 +17,6 @@ public class PlayerMovement: MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _moveSpeed = moveSpeed;
         _rotationSpeed = rotateSpeed;
-        
     }
 
     private void Update()
@@ -40,9 +38,8 @@ public class PlayerMovement: MonoBehaviour
        
         _temp.x = inputHorizontal;
         _temp.z = inputVertical;
-        //_nav.Move(_temp * _playerSpeed * Time.deltaTime);
-              
-       _rigidbody.transform.Translate(transform.forward * Time.deltaTime * _moveSpeed, Space.World);
+
+        _rigidbody.transform.Translate(transform.forward * Time.deltaTime * _moveSpeed, Space.World);
 
         Rotation();
     }

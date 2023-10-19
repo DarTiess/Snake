@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class Apple: MonoBehaviour
+    public class Apple: MonoBehaviour, IFood
     {
         public event Action<Apple> EatApple;
 

@@ -1,5 +1,4 @@
-﻿using System;
-using Infrastructure.Level;
+﻿using Infrastructure.Level;
 using UnityEngine;
 
 namespace CamFollow {
@@ -9,18 +8,13 @@ namespace CamFollow {
         [SerializeField] private float _height = 2;
         [SerializeField] private float _heightDamping = 2;
         [SerializeField] private float _rotationDamping = 0.6f;
-
-       
-        [Space][Space]  
         [SerializeField] private bool _dropTarget;
         
-
         private Transform _target;
         private Vector3 _temp;
+        private ILevelEvents _levelAction;
 
-        private LevelAction _levelAction;
-
-        public void Initialize(LevelAction levAction, Transform player)
+        public void Initialize(ILevelEvents levAction, Transform player)
         {
             _levelAction = levAction;
             _target = player;
@@ -62,8 +56,7 @@ namespace CamFollow {
             transform.position -= currentRotation * Vector3.forward * _distance;  
        
             transform.position = new Vector3(transform.position.x, currentHeight, transform.position.z);    
-
-           // transform.LookAt(_target);     
+    
         }
 
         public void SetStop()

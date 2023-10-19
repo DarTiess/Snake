@@ -9,9 +9,14 @@ namespace UI.UIPanels
         [SerializeField] private Button _button;
         public virtual event Action ClickedPanel;
 
-        private void Start()
+        private void OnEnable()
         {
             _button.onClick.AddListener(OnClickedPanel);
+        }
+
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(OnClickedPanel);
         }
 
         public void Hide()

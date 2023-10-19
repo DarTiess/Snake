@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace DefaultNamespace
 {
@@ -8,14 +10,16 @@ namespace DefaultNamespace
         private Transform _player;
         private float _radiusSpawn;
 
-        public void Initialize(Apple applePrefab, int appleCount, Transform player, float radiusSpawn)
+        public event Action EatenApple;
+
+        public void Initialize(AppleConfig config, Transform player)
         {
             _pooler = new ObjectPoole<Apple>();
-            _pooler.CreatePool(applePrefab,appleCount,transform);
+            _pooler.CreatePool(config.ApplePrefab,config.AppleCount,transform);
             _player = player;
-            _radiusSpawn = radiusSpawn;
+            _radiusSpawn = config.AppleSpawnRadius;
 
-            SpawnApples(appleCount-1);
+            SpawnApples(config.AppleCount-1);
         }
 
         private void SpawnApples(int count)
@@ -29,9 +33,10 @@ namespace DefaultNamespace
             }
         }
 
-        private void OnEatenApple(Apple applej)
+        private void OnEatenApple(Apple apple)
         {
-            applej.EatApple -= OnEatenApple;
+            apple.EatApple -= OnEatenApple;
+            EatenApple?.Invoke();
             SpawnApples(1);
         }
     }

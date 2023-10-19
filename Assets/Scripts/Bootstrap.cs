@@ -10,8 +10,7 @@ public class Bootstrap : MonoBehaviour
 {
    [Header("Player Settings")]
    [SerializeField] private PlayerContainer _playerContainer;
-   [SerializeField] private float _moveSpeed;
-   [SerializeField] private float _rotateSpeed;
+   [SerializeField] private PlayerConfig _playerConfig;
    [Space(20)]
    [Header("Level Settings")]
    [SerializeField] private LevelLoader _levelLoader;
@@ -23,9 +22,7 @@ public class Bootstrap : MonoBehaviour
    [Space(20)]
    [Header("Apple Spawner")]
    [SerializeField] private AppleSpawner _appleSpawner;
-   [SerializeField] private float _appleSpawnRadius;
-   [SerializeField] private Apple _applePrefab;
-   [SerializeField] private int _appleCount;
+   [SerializeField] private AppleConfig _appleConfig;
    [Space(20)]
    [Header("Planet Settings")]
    [SerializeField] private PlaneSpawner _planeSpawner;
@@ -39,18 +36,43 @@ public class Bootstrap : MonoBehaviour
    private void Awake()
    {
       _input = InputService();
+      CreateLevelActions();
+      InitializeUI();
+      InitializePlayer();
+      InitializeCamera();
+      InitializeAppleSpawner();
+      InitializePlaneSpawner();
+   }
 
-      _levelAction = new LevelAction(_timeToLose, _timeToWin);
-      _uiCanvas.Initialize(_levelAction, _levelAction, _levelLoader);
-      
-      _playerContainer.Initialize(_input,_levelAction, _moveSpeed, _rotateSpeed);
-      
+   private void InitializePlaneSpawner()
+   {
+      _planeSpawner.Initialize(_planePartPrefab, _planeCount);
+   }
+
+   private void InitializeAppleSpawner()
+   {
+      _appleSpawner.Initialize(_appleConfig, _playerContainer.transform);
+   }
+
+   private void InitializeCamera()
+   {
       _camera = Camera.main.GetComponent<CamFollower>();
       _camera.Initialize(_levelAction, _playerContainer.transform);
-      
-      _appleSpawner.Initialize(_applePrefab, _appleCount, _playerContainer.transform,_appleSpawnRadius);
-      
-      _planeSpawner.Initialize(_planePartPrefab, _planeCount);
+   }
+
+   private void InitializePlayer()
+   {
+      _playerContainer.Initialize(_input, _levelAction, _playerConfig);
+   }
+
+   private void InitializeUI()
+   {
+      _uiCanvas.Initialize(_levelAction, _levelAction, _levelLoader);
+   }
+
+   private void CreateLevelActions()
+   {
+      _levelAction = new LevelAction(_timeToLose, _timeToWin);
    }
 
 
