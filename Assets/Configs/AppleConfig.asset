@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a1242345d084802909c76e18caa0433, type: 3}
   m_Name: AppleConfig
   m_EditorClassIdentifier: 
-  _appleSpawnRadius: 10
-  _applePrefab: {fileID: 3211586786998470337, guid: 91da90e77d2c83a4781a2583fc5563f5, type: 3}
+  _appleSpawnRadius: 14.46
+  _applePrefab: {fileID: 4627211723439891245, guid: 33d80687c45fafa46a9ec97b8032274b, type: 3}
   _appleCount: 5

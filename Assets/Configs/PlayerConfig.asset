@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 3
   _rotateSpeed: 1.9
-  _tailSpeed: 2.87
-  _tailPrefab: {fileID: 3360670247199435304, guid: 7574e73c119ac274b874cc6fe8a69733, type: 3}
+  _tailSpeed: 2.03
+  _tailPrefab: {fileID: 6975521973867241624, guid: 1245c6036c1d31e4fb9d0063474fda76, type: 3}
   _maxTailSize: 10

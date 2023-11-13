@@ -29,6 +29,7 @@ namespace DefaultNamespace
                Apple apple= _pooler.GetObject();
                apple.EatApple += OnEatenApple;
                apple.transform.position = _player.position + new Vector3(Random.Range(-_radiusSpawn, _radiusSpawn), _player.position.y, Random.Range(-_radiusSpawn, _radiusSpawn));
+               apple.transform.LookAt(_player);
 
             }
         }
